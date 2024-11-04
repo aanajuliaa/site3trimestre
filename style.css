@@ -1,0 +1,129 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Fonte base */
+    background: linear-gradient(135deg, #ff6f61, #ffcc00); /* Gradiente colorido mais vibrante */
+    color: #000; /* Cor do texto preta */
+    overflow: hidden; /* Evita scroll desnecessário */
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease; /* Animação de aparição */
+    color: #fff; /* Cor do título branca */
+    font-family: 'Verdana', sans-serif; /* Fonte do título */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    gap: 20px; /* Espaçamento entre os cartões */
+    padding: 20px;
+    justify-items: center; /* Centraliza os cartões na grade */
+    height: calc(100vh - 100px); /* Ocupa toda a altura da tela menos o cabeçalho */
+    overflow-y: auto; /* Adiciona rolagem se necessário */
+}
+
+.card {
+    width: 300px; /* Largura dos cartões ajustada */
+    perspective: 1000px; /* Permite o efeito 3D */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s; /* Aumenta a duração da animação */
+    transform-style: preserve-3d; /* Mantém a aparência 3D */
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Gira o cartão ao passar o mouse */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde a parte de trás quando não visível */
+    border: 2px solid #ff5722; /* Cor da borda */
+    border-radius: 16px; /* Bordas arredondadas */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-back {
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo levemente diferente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotateY(180deg); /* Gira a parte de trás para que fique invisível inicialmente */
+}
+
+h2 {
+    font-size: 1.5em; /* Aumenta o tamanho do texto da pergunta */
+    cursor: pointer; /* Indica que o título é clicável */
+    transition: color 0.3s; /* Transição suave para a cor */
+    color: #3f51b5; /* Cor do texto das perguntas */
+    font-family: 'Georgia', serif; /* Fonte diferente para perguntas */
+}
+
+h2:hover {
+    color: #ff5722; /* Muda a cor do texto ao passar o mouse */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra no texto */
+}
+
+.card-back p {
+    font-size: 1.2em; /* Tamanho do texto da resposta */
+    font-family: 'Georgia', serif; /* Fonte diferente para respostas */
+    text-align: center; /* Centraliza o texto da resposta */
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas menores */
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+}
+
+
+
+
+
